@@ -68,7 +68,13 @@ const Page = () => {
   const [totalCost, setTotalCost] = useState(0);
   const [totalChildPrice, setTotalChildPrice] = useState(0);
 
-  const handleSelectionChange = (prevValue, newValue, roomPrice, childPrice, roomId) => {
+  const handleSelectionChange = (
+    prevValue,
+    newValue,
+    roomPrice,
+    childPrice,
+    roomId
+  ) => {
     const difference = newValue - prevValue;
     const newTotalSelected = totalSelected + difference;
 
@@ -76,11 +82,14 @@ const Page = () => {
       setTotalSelected(newTotalSelected);
 
       // Calculate the new total cost based on room price + child price
-      setTotalCost((currentTotal) => currentTotal + difference * (roomPrice + childPrice));
+      setTotalCost(
+        (currentTotal) => currentTotal + difference * (roomPrice + childPrice)
+      );
 
       // Update total child price
-      setTotalChildPrice((currentTotalChildPrice) =>
-        currentTotalChildPrice + difference * childPrice
+      setTotalChildPrice(
+        (currentTotalChildPrice) =>
+          currentTotalChildPrice + difference * childPrice
       );
 
       return true;
@@ -149,9 +158,11 @@ const Page = () => {
       locationName
     )}&startdate=${encodeURIComponent(
       formattedStartDate
-    )}&enddate=${encodeURIComponent(formattedEndDate)}&adults=${total.adults
-      }&children=${total.children}&infants=${total.infants}&noOfRooms=${total.noOfRooms
-      }`;
+    )}&enddate=${encodeURIComponent(formattedEndDate)}&adults=${
+      total.adults
+    }&children=${total.children}&infants=${total.infants}&noOfRooms=${
+      total.noOfRooms
+    }`;
 
     window.location.href = searchUrl;
   };
@@ -1638,18 +1649,20 @@ const Page = () => {
                       {/* <CalendarDaysIcon className="w-6 h-6 text-gray-600" /> */}
                     </button>
                   </div>
-                  
-                {/* <h1>{adults}</h1> */}
-                       
+
+                  {/* <h1>{adults}</h1> */}
+
                   <div className="w-[370px]">
                     <AddRoom
                       setTotal={setTotal}
                       total={total}
                       adults={defaultAdults}
-                      children={defaultChildren}
+                      children={defaultChildren} // Ensure this prop isn't causing the error
                       infants={defaultInfants}
                       noOfRooms={1} // or any default number of rooms
-                    />
+                    >
+                      {/* Any nested children could go here if needed */}
+                    </AddRoom>
                   </div>
                   <button
                     onClick={handleSearch} // Call the search function on click
@@ -1674,7 +1687,6 @@ const Page = () => {
                         adults={adults}
                         // onRoomSelect={handleRoomSelection}
                         onSelectionChange={handleSelectionChange}
-
                       />
                     ))}
                     {totalSelected > noOfRooms && (
@@ -1939,7 +1951,9 @@ const Page = () => {
 
                         <div className="flex items-center justify-between mb-4 mt-6">
                           <p className="mb-0 clr-neutral-500">Adults: </p>
-                          <p className="mb-0 font-medium"> {adults}
+                          <p className="mb-0 font-medium">
+                            {" "}
+                            {adults}
                             {/* $
                             {(() => {
                               let x; // Declare x outside the condition
