@@ -11,7 +11,7 @@ const Page = () => {
   const [error, setError] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false); // State to show success popup
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
