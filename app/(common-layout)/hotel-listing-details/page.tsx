@@ -1657,12 +1657,10 @@ const Page = () => {
                       setTotal={setTotal}
                       total={total}
                       adults={defaultAdults}
-                      children={defaultChildren} // Ensure this prop isn't causing the error
+                      defaultChildren={defaultChildren}
                       infants={defaultInfants}
                       noOfRooms={1} // or any default number of rooms
-                    >
-                      {/* Any nested children could go here if needed */}
-                    </AddRoom>
+                    />
                   </div>
                   <button
                     onClick={handleSearch} // Call the search function on click
