@@ -36,19 +36,13 @@ const Page = () => {
       const token = data.access_token;
       console.log("Token:", token); // Log the token
 
-      if (!token) {
-        throw new Error("Token not found in the response.");
-      }
-
       // Save token to localStorage
       localStorage.setItem("access_token", token);
 
       // Show success popup
       setIsSuccess(true);
       setTimeout(() => setIsSuccess(false), 3000);
-    } catch (err) {
-      setError(err.message);
-    }
+    } catch (err) {}
   };
 
   return (
