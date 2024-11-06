@@ -88,10 +88,10 @@ const Page = () => {
               adults={Number(adults)}
               numChildren={Number(children)}
               infants={Number(infants)}
-              noOfRooms={noOfRooms}
-              loc={loc}
-              startdate={startdate}
-              enddate={enddate}
+              noOfRooms={noOfRooms ?? ""}
+              loc={loc ?? ""}
+              startdate={startdate ?? ""}
+              enddate={enddate ?? ""}
             />
           )
         )
